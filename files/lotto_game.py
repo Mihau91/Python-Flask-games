@@ -1,4 +1,4 @@
-from random import randint, shuffle
+from random import shuffle
 
 
 def get_number():
@@ -61,13 +61,27 @@ def lotto():
     """
     Main function
     """
-    user_numbers = get_numbers()
-    lotto_numbers = random_numbers()
+    user_numbers = get_numbers()  # get list of user numbers
+    lotto_numbers = random_numbers()  # get 6 numbers from shuffle list
+    hits = 0
+    hit_numbers = []
 
     print("Your numbers: ")
     print_numbers(user_numbers)
     print("Lotto numbers: ")
     print_numbers(lotto_numbers)
+
+    for number in user_numbers:  # checks for each user number if are in lotto numbers
+        if number in lotto_numbers:
+            hits += 1  # hit's counter
+            hit_numbers.append(number)  # added hit numbers to the new list
+
+    if hits > 1:
+        print(f"You hit {hits} numbers")
+    elif hits == 1:
+        print(f"You hit {hits} number")
+    else:
+        print("No hits. Sorry!")
 
 
 if __name__ == "__main__":
