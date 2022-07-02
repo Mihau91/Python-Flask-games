@@ -1,4 +1,4 @@
-from random import randint
+from random import randint, shuffle
 
 
 def get_number():
@@ -41,14 +41,33 @@ def print_numbers(numbers):
     :param numbers: list of numbers
     :type numbers: list
     """
-    print(", ".join((str(number) for number in sorted(numbers))))
+    print(
+        ", ".join((str(number) for number in sorted(numbers))))  # change each int to string in sorted list and print it
+
+
+def random_numbers():
+    """
+    Chose 6 numbers from shuffled list
+
+    :return: first 6 numbers of shuffled list
+    :rtype: list
+    """
+    numbers = list(range(1, 49))  # created list of numbers from 1-49
+    shuffle(numbers)
+    return numbers[:6]  # first 6 el of the list.
 
 
 def lotto():
     """
     Main function
     """
-    print_numbers(get_numbers())
+    user_numbers = get_numbers()
+    lotto_numbers = random_numbers()
+
+    print("Your numbers: ")
+    print_numbers(user_numbers)
+    print("Lotto numbers: ")
+    print_numbers(lotto_numbers)
 
 
 if __name__ == "__main__":
