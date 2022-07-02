@@ -9,7 +9,13 @@ def get_number():
     :return: given number as int
     :rtype: int
     """
-    result = int(input("Guess the number: "))
+    while True:
+        try:
+            result = int(input("Guess the number: "))
+            break
+        except ValueError:
+            print("Wrong input! Type only integer number!")
+
     return result
 
 
