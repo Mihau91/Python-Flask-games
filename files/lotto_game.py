@@ -32,3 +32,24 @@ def get_numbers():
             print("Same number or number over the range 1 - 49!")
 
     return user_numbers
+
+
+def print_numbers(numbers):
+    """
+    Print given numbers with ascending order.
+
+    :param numbers: list of numbers
+    :type numbers: list
+    """
+    print(", ".join((str(number) for number in sorted(numbers))))
+
+
+def lotto():
+    """
+    Main function
+    """
+    print_numbers(get_numbers())
+
+
+if __name__ == "__main__":
+    lotto()
