@@ -15,3 +15,20 @@ def get_number():
             print("Wrong input! Type only integer number")
     return user_num
 
+
+def get_numbers():
+    """
+    Get 6 numbers from users that are in range of 1 - 49
+
+    :return: list of numbers
+    :rtype: list
+    """
+    user_numbers = []
+    while len(user_numbers) < 6:
+        number = get_number()
+        if number not in user_numbers and 0 < number <= 49:
+            user_numbers.append(number)
+        else:
+            print("Same number or number over the range 1 - 49!")
+
+    return user_numbers
