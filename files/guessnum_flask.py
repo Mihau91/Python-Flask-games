@@ -10,6 +10,9 @@ def guess_the_number():
         max_value = 1000
         return render_template("welcome_page.html", min=min_value, max=max_value)
     else:
+        user_answer = request.form.get("user_answer")
+        if user_answer == "you win!":
+            return render_template("win_page.html")
         return render_template("main_page.html")
 
 if __name__ == '__main__':
