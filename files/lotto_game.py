@@ -52,7 +52,7 @@ def random_numbers():
     :return: first 6 numbers of shuffled list
     :rtype: list
     """
-    numbers = list(range(1, 49))  # created list of numbers from 1-49
+    numbers = list(range(1, 50))  # created list of numbers from 1-49
     shuffle(numbers)
     return numbers[:6]  # first 6 el of the list.
 
