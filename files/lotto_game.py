@@ -77,9 +77,9 @@ def lotto():
             hit_numbers.append(number)  # added hit numbers to the new list
 
     if hits > 1:
-        print(f"You hit {hits} numbers")
+        print(f"You hit {hits} numbers: ", hit_numbers)
     elif hits == 1:
-        print(f"You hit {hits} number")
+        print(f"You hit {hits} number: ", hit_numbers)
     else:
         print("No hits. Sorry!")
 
