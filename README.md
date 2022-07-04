@@ -8,6 +8,7 @@ Six simple games written in Python/Flask.
   * [Guess The Number V3](#guess-the-number-v3)
   * [Dice Roller](#dice-roller)
   * [2001 Game](#2001-game)
+  * [2001 Game Flask](#2001-game-flask)
 
 
 ### Guess The Number
@@ -27,3 +28,6 @@ Simulation of dice roll. As input user types the type of the dice and programm c
  
 ### 2001 Game
 This is a simple console game where two playeres throw two dices. Each throw is addet to the result with the following rules: If you get 11, the actual result is multiple by 11, if you get 7 the result is divided by 7. Player who gets 2001 points first wins.
+
+### 2001 Game Flask
+Same as above but in Flask.
