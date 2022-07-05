@@ -15,12 +15,21 @@ def dice_roll():
 
 def summary_of_throw(points, to_add):
     """
-    Simple function that add points
+    Function calculates point depends on throw.
 
-    :return: sum of points
+    :return: calculated points
     :rtype: int
     """
-    result = points + to_add
+    if to_add == 7:  # if statements to properly add point according to game's rules.
+        result = points // 7
+    elif to_add == 11:
+        result = points * 11
+    else:
+        result = points + to_add
+
+    if result > 2001:  # to prevent exceeding points over 2001
+        result = 2001
+
     return result
 
 
@@ -28,25 +37,30 @@ def main_game():
     """
     Main function with game logic.
     """
-    player_1 = 0
-    player_2 = 0
+    player_points = 0
+    computer_points = 0
 
     print("Welcome to 2001 game")
-    print(f"Player 1 has: {player_1} points")
-    print(f"Player 2 has: {player_2} points")
+    print(f"Player has: {player_points} points")
+    print(f"Computer has: {computer_points} points")
     input("Press Enter to start")
 
-    while player_1 <= 2001 and player_2 <= 2001:
-        throw_1 = dice_roll()
-        throw_2 = dice_roll()
-        player_1 = summary_of_throw(player_1, throw_1)
-        player_2 = summary_of_throw(player_2, throw_2)
-        print(f"Player 1 has: {player_1} points \nPlayer 2 has {player_2} points.")
+    while player_points < 2001 and computer_points < 2001:
+        player_throw = dice_roll()  # roll a dice to get points.
+        computer_throw = dice_roll()
 
-    if player_1 > player_2:
-        print("Player 1 wins!")
+        player_points = summary_of_throw(player_points, player_throw)  # using func. to calculate points.
+        computer_points = summary_of_throw(computer_points, computer_throw)
+
+        print(f"Player 1 has: {player_points} points \nPlayer 2 has {computer_points} points.")
+        input("Press 'Enter'")
+
+    if player_points > computer_points:  # Checks who win
+        print("Player wins!")
+    elif player_points == computer_points:
+        print("Draw!")
     else:
-        print("player 2 wins!")
+        print("Computer wins!")
 
 
 if __name__ == "__main__":
