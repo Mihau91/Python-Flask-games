@@ -40,7 +40,13 @@ def main_game():
     player_points = 0
     computer_points = 0
 
-    print("Welcome to 2001 game")
+    print("""
+    Welcome to 2001 game.
+    Rules are simple. Both opponents have to throw two D6 dices.
+    First who collect 2001 win, but if player hits 7 on dices needs to divide score by 7,
+    if player hits 11 on dices needs to multiple score by 11. Good luck!
+    -------------------------------------------------------------------------------------
+    """)
     print(f"Player has: {player_points} points")
     print(f"Computer has: {computer_points} points")
     input("Press Enter to start")
@@ -52,10 +58,12 @@ def main_game():
         player_points = summary_of_throw(player_points, player_throw)  # using func. to calculate points.
         computer_points = summary_of_throw(computer_points, computer_throw)
 
-        print(f"Player 1 has: {player_points} points \nPlayer 2 has {computer_points} points.")
+        print(f"Your throw: {player_throw}\nComputer's throw: {computer_throw}\n")
+        print(f"Player has: {player_points} points \nComputer has {computer_points} points.")
         input("Press 'Enter'")
+        print("----------------------")
 
-    if player_points > computer_points:  # Checks who win
+    if player_points > computer_points:  # Checks who win and prints it.
         print("Player wins!")
     elif player_points == computer_points:
         print("Draw!")
