@@ -1,14 +1,34 @@
 from random import randint
 
+DICE_TYPES = [
+    "D100",
+    "D20",
+    "D12",
+    "D10",
+    "D8",
+    "D6",
+    "D4",
+    "D3"
+]
 
-def dice_roll():
+
+def dice_roll(dice_type1, dice_type2):
     """
-    Function calculates result of the dice throw.
+    Function takes input from user, checks type of dice and calculates result of the dice throw.
 
     :return: Result of the throw
     :rtype: int
     """
-    result = sum([randint(1, 6) for _ in range(2)])  # calculates throw of two D6 dices.
+    for dice in DICE_TYPES:  # checks each dice type with user input and takes the value.
+        if dice in dice_type1:
+            dice_value1 = int(dice[1:])  # takes dice value anc cut it to get number
+
+    for dice in DICE_TYPES:
+        if dice in dice_type2:
+            dice_value2 = int(dice[1:])
+
+
+    result = sum([randint(1, dice_value1) + randint(1, dice_value2)])  # calculates throw of two D6 dices.
 
     return result
 
@@ -47,13 +67,14 @@ def main_game():
     if player hits 11 on dices needs to multiple score by 11. Good luck!
     -------------------------------------------------------------------------------------
     """)
+
     print(f"Player has: {player_points} points")
     print(f"Computer has: {computer_points} points")
     input("Press Enter to start")
 
     while player_points < 2001 and computer_points < 2001:
-        player_throw = dice_roll()  # roll a dice to get points.
-        computer_throw = dice_roll()
+        player_throw = dice_roll("D6", "D6")  # roll a dice to get points.
+        computer_throw = dice_roll("D6", "D6")
 
         player_points = summary_of_throw(player_points, player_throw)  # using func. to calculate points.
         computer_points = summary_of_throw(computer_points, computer_throw)
