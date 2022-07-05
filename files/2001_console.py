@@ -19,18 +19,14 @@ def dice_roll(dice_type1, dice_type2):
     :return: Result of the throw
     :rtype: int
     """
-    for dice in DICE_TYPES:  # checks each dice type with user input and takes the value.
-        if dice in dice_type1:
+    for dice in DICE_TYPES:  # checks each dice type with input and takes the number from string.
+        if dice in dice_type1 and dice in dice_type2:
             dice_value1 = int(dice[1:])  # takes dice value anc cut it to get number
-
-    for dice in DICE_TYPES:
-        if dice in dice_type2:
             dice_value2 = int(dice[1:])
-
-
-    result = sum([randint(1, dice_value1) + randint(1, dice_value2)])  # calculates throw of two D6 dices.
-
-    return result
+            result = sum([randint(1, dice_value1) + randint(1, dice_value2)])  # calculates throw of two D6 dices.
+            return result
+    else:
+        return "Wrong input"
 
 
 def summary_of_throw(points, to_add):
