@@ -59,7 +59,7 @@ def main_game():
 
     print("""
     Welcome to 2001 game.
-    Rules are simple. Both opponents have to throw two D6 dices.
+    Rules are simple. Both opponents have to throw two selected dices.
     First who collect 2001 win, but if player hits 7 on dices needs to divide score by 7,
     if player hits 11 on dices needs to multiple score by 11. Good luck!
     -------------------------------------------------------------------------------------
