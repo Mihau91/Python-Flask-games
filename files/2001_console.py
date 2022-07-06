@@ -1,4 +1,4 @@
-from random import randint
+from random import randint, choice
 
 DICE_TYPES = [
     "D100",
@@ -12,21 +12,20 @@ DICE_TYPES = [
 ]
 
 
-def dice_roll(dice_type1, dice_type2):
+def dice_roll(dices):
     """
-    Function takes input from user, checks type of dice and calculates result of the dice throw.
+    Function takes input from user, checks type of dice and calculates result of the throw.
 
     :return: Result of the throw
     :rtype: int
     """
-    for dice in DICE_TYPES:  # checks each dice type with input and takes the number from string.
-        if dice in dice_type1 and dice in dice_type2:
-            dice_value1 = int(dice[1:])  # takes dice value anc cut it to get number
-            dice_value2 = int(dice[1:])
-            result = sum([randint(1, dice_value1) + randint(1, dice_value2)])  # calculates throw of two D6 dices.
-            return result
-    else:
-        return "Wrong input"
+    result = 0
+    for dice in DICE_TYPES:  # checks each dice type with input.
+        if dice in dices:
+            dice_value = int(dice[1:])  # takes dice value anc cut it to get number
+            result += sum([randint(1, dice_value)])  # calculate throw
+
+    return result
 
 
 def summary_of_throw(points, to_add):
@@ -53,6 +52,8 @@ def main_game():
     """
     Main function with game logic.
     """
+    user_dices = []
+    computer_dices = []
     player_points = 0
     computer_points = 0
 
@@ -63,14 +64,20 @@ def main_game():
     if player hits 11 on dices needs to multiple score by 11. Good luck!
     -------------------------------------------------------------------------------------
     """)
+    for i in range(2):  # loop takes dice type from user and add it to list.
+        user_choice = input(f"Choose dice type({DICE_TYPES}): ").upper()
+        computer_choice = choice(DICE_TYPES)
+        user_dices.append(user_choice)
+        computer_dices.append(computer_choice)
 
+    print(f"Computer chose: {computer_dices[0]}, {computer_dices[1]}\n")
     print(f"Player has: {player_points} points")
     print(f"Computer has: {computer_points} points")
     input("Press Enter to start")
 
     while player_points < 2001 and computer_points < 2001:
-        player_throw = dice_roll("D6", "D6")  # roll a dice to get points.
-        computer_throw = dice_roll("D6", "D6")
+        player_throw = dice_roll(user_dices)  # roll a dice to get points.
+        computer_throw = dice_roll(computer_dices)
 
         player_points = summary_of_throw(player_points, player_throw)  # using func. to calculate points.
         computer_points = summary_of_throw(computer_points, computer_throw)
