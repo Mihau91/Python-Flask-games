@@ -46,7 +46,7 @@ def dice_throw():
     result = sum(
         [randint(1, dice_value) for _ in range(multiplier)]) + modifier  # return sum of simulated throw + modifier
 
-    return f"Throw of {multiplier} {dice} dice modified by {modifier} is: {result}"
+    return result
 
 
 def dice_main():
@@ -70,7 +70,7 @@ def dice_main():
     
     Possible dices: D3, D4, D6, D8, D10, D12, D20, D100
     """)
-    return dice_throw()
+    return f"The result is: {dice_throw()}"
 
 
 if __name__ == "__main__":
